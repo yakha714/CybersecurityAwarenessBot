@@ -1,21 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
-    <PackageReference Include="System.Windows.Extensions" Version="10.0.5" />
+    <PackageReference Include="System.Windows.Extensions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="greeting.wav..mpeg">
+    <None Update="greeting.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>
