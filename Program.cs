@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Media;
-using CybersecurityAwarenessBot;
+using System.IO;
 
 namespace CybersecurityAwarenessBot
 {
@@ -8,26 +8,35 @@ namespace CybersecurityAwarenessBot
     {
         static void Main(string[] args)
         {
-            // TASK 1: Voice Greeting
+            // Voice greeting attempt - this adds a friendly touch when the bot starts
             try
             {
-                // Ensure the filename here matches your file in Solution Explorer
-                SoundPlayer player = new SoundPlayer("greeting.wav...mpeg");
-                player.Play();
+                string soundPath = "greeting.wav";
+                if (File.Exists(soundPath))
+                {
+                    SoundPlayer player = new SoundPlayer(soundPath);
+                    player.PlaySync();
+                }
+                else
+                {
+                    Console.WriteLine("Note: greeting.wav file not found. Voice greeting skipped.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Audio Error: " + ex.Message);
             }
 
-            // TASK 2: UI Header & Logo
+            // Display the welcome header with ASCII art
             UIHelper.ShowHeader();
 
-            // TASK 3: Bot Conversation
-            Chatbot myBot = new Chatbot();
-            myBot.Start();
+            // Start the main chatbot conversation
+            Chatbot bot = new Chatbot();
+            bot.Start();
 
-            Console.WriteLine("\n--- Session Active. Press Enter to exit. ---");
+            // Session has ended - show appropriate exit message
+            UIHelper.TypeMessage("\nBot: Session ended. Thanks for learning about cybersecurity!");
+            UIHelper.TypeMessage("Press Enter to close the window...");
             Console.ReadLine();
         }
     }
